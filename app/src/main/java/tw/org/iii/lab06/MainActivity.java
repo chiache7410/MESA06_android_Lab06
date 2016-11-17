@@ -24,6 +24,15 @@ public class MainActivity extends AppCompatActivity {
         uiHandler = new UIHandler();
         tv = (TextView)findViewById(R.id.tv);
     }
+    @Override
+    public void finish() {
+        if (timer != null) {
+            timer.purge();
+            timer.cancel();
+            timer = null;
+        }
+        super.finish();
+    }
     public void test1(View v) {
         MyThread mt1 = new MyThread();
         mt1.start();
